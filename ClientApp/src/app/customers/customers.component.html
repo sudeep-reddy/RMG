@@ -1,0 +1,89 @@
+<div class="pg-assnpro">
+    <div class="heading">
+        <h3>Customers</h3>
+    </div>
+    <body>
+      <div class="btnbar">
+        <li>
+          <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+        </li>
+        <li>
+          <button type="button" (click)="SaveCustomer()" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-ok"></span></button>
+        </li>
+        <li>
+          <button type="button" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button>
+        </li>
+      </div>
+      <br><br>
+      <hr>
+      <table>
+        <tr style="background:#8BBC58">
+          <th>Customer Id</th>
+          <th>Customer Code</th>
+          <th>Customer Name</th>
+          <th>Location Id</th>
+          <th>Project Name</th>
+        </tr>
+
+        <tbody>
+          <tr *ngFor="let c of custs">
+            <td><input type="text" [(ngModel)]="c.cust_id" placeholder="Customer Id" required autofocus></td>
+            <td> <input type="text" [(ngModel)]="c.cust_code" placeholder="Customer Code" required></td>
+            <td> <input type="text" [(ngModel)]="c.cust_name" placeholder="Customer Name" required></td>
+            <td> <input type="text" [(ngModel)]="c.location_id" placeholder="Location Id" required></td>
+            <td> <input type="text" [(ngModel)]="c.Project_Name" placeholder="Project Name" required></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <button (click)="addrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-plus"></span></button>
+      <button (click)="delrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-minus"></span></button>
+      <hr>
+      <div class="btnbar">
+        <li>
+          <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+        </li>
+        <li>
+          <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-export"></span></button>
+        </li>
+      </div>
+      <br><br><br>
+      <table>
+        <tr style="background:#8BBC58">
+
+          <th><input type="checkbox"></th>
+          <th></th>
+          <th>cust_id</th>
+          <th>cust_code</th>
+          <th>cust_name</th>
+          <th>location_id</th>
+          <th>Project_Name</th>
+        </tr>
+
+
+
+        <tbody>
+
+          <tr *ngFor="let cu of cust">
+            <td><input type="checkbox" /></td>
+
+            <td>
+              <button (click)="edit(cu.cust_id)"><span class="glyphicon glyphicon-pencil"></span></button>
+              <button><span (click)="DeleteCustomer(cu.cust_id)" class="glyphicon glyphicon-trash btn-bg" style="color:red"></span></button>
+              <button><span (click)="cancel(cu.cust_id)" class="glyphicon glyphicon-remove"></span></button>
+              <button><span (click)="UpdateCustomer(cu)" class="glyphicon glyphicon-ok" style="color:green"></span></button>
+
+            <td>{{cu.cust_id}}</td>
+            <td *ngIf="cu.cust_id === EditRowId"><input type="text" [(ngModel)]="cu.cust_code" /></td>
+            <td *ngIf="cu.cust_id!==EditRowId">{{cu.cust_code}}</td>
+            <td *ngIf="cu.cust_id === EditRowId"><input type="text" [(ngModel)]="cu.cust_name" /></td>
+            <td *ngIf="cu.cust_id!==EditRowId">{{cu.cust_name}}</td>
+            <td *ngIf="cu.cust_id === EditRowId"><input type="text" [(ngModel)]="cu.location_id" /></td>
+            <td *ngIf="cu.cust_id!==EditRowId">{{cu.location_id}}</td>
+            <td *ngIf="cu.cust_id === EditRowId"><input type="text" [(ngModel)]="cu.project_Name" /></td>
+            <td *ngIf="cu.cust_id!==EditRowId">{{cu.project_Name}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </body>
+</div>

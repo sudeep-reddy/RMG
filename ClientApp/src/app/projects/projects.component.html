@@ -1,0 +1,85 @@
+<div class="pg-assnpro">
+  <div class="heading">
+    <h3>Projects</h3>
+  </div>
+  <body>
+    <div class="btnbar">
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+      </li>
+      <li>
+        <button type="button" (click)="OnSubmit()" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-ok" ></span></button>
+      </li>
+      <li>
+        <button type="button" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button>
+      </li>
+    </div>
+    <br><br>
+    <hr>
+    <table>
+      <tr style="background:#8BBC58">
+        <th>Project Id</th>
+        <th>Project Name</th>
+        <th>Project Description</th>
+        <th>Project Assign Date</th>
+        <th>Project End Date</th>
+        <th>Project Status</th>
+      </tr>
+    
+      <tr *ngFor="let pr of proj">
+        <td><input style="width:100px;" type="text" [(ngModel)]="pr.Project_ID" placeholder="Project ID"></td>
+        <td><input style="width:250px;" type="text" [(ngModel)]="pr.Project_Name" placeholder="Project Name"></td>
+        <td><input style="width:250px;" type="text" [(ngModel)]="pr.Project_Description" placeholder="Project Description"></td>
+        <td><input style="width:100px;" type="text" [(ngModel)]="pr.Project_StartDate" placeholder="Project Assign Date"></td>
+        <td><input style="width:100px;" type="text" [(ngModel)]="pr.Project_EndDate" placeholder="Project End Date"></td>
+        <td><input style="width:100px;" type="text" [(ngModel)]="pr.Project_Status" placeholder="Project Status"></td>
+      </tr>
+    </table>
+    <br>
+    <button (click)="addrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-plus"></span></button>
+    <button (click)="delrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-minus"></span></button>
+    <hr>
+    <div class="btnbar">
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+      </li>
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-export"></span></button>
+      </li>
+    </div>
+    <br><br><br>
+    <table>
+      <tr style="background:#8BBC58">
+        <th><input type="checkbox"></th>
+        <th> </th>
+        <th>Project ID</th>
+        <th>Project Name</th>
+        <th>Project Description</th>
+        <th>Project Assign Date</th>
+        <th>Project End Date</th>
+        <th>Project Status</th>
+      </tr>
+      <tr *ngFor="let pr of projectlist">
+        <td><input type="checkbox"></td>
+        <td><button (click)="edit(pr.project_ID)"><span class="glyphicon glyphicon-pencil"></span></button><button><span (click)="disable(pr.project_ID)" class="glyphicon glyphicon-trash btn-bg" style="color:red"></span></button><button><span (click)="cancel(pr.project_ID)" class="glyphicon glyphicon-remove"></span></button><button><span (click)="update(pr)" class="glyphicon glyphicon-ok" style="color:green"></span></button>
+
+        <td>{{pr.project_ID}}</td>
+
+        <td *ngIf="pr.project_ID === EditRowId"><input type="text" [(ngModel)]="pr.project_Name" /></td>
+        <td *ngIf="pr.project_ID!==EditRowId">{{pr.project_Name}}</td>
+
+        <td *ngIf="pr.project_ID === EditRowId"><input type="text" [(ngModel)]="pr.project_Description" /></td>
+        <td *ngIf="pr.project_ID!==EditRowId">{{pr.project_Description}}</td>
+
+        <td *ngIf="pr.project_ID === EditRowId"><input type="text" [(ngModel)]="pr.project_StartDate" /></td>
+        <td *ngIf="pr.project_ID!==EditRowId">{{pr.project_StartDate}}</td>
+
+        <td *ngIf="pr.project_ID === EditRowId"><input type="text" [(ngModel)]="pr.project_EndDate" /></td>
+        <td *ngIf="pr.project_ID!==EditRowId"> {{pr.project_EndDate}}</td>
+
+        <td *ngIf="pr.project_ID === EditRowId"><input type="text" [(ngModel)]="pr.project_Status" /></td>
+        <td *ngIf="pr.project_ID!==EditRowId"> {{pr.project_Status}}</td>
+      </tr>
+    </table>
+  </body>
+</div>

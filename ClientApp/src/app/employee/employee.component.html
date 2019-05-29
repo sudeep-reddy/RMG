@@ -1,0 +1,114 @@
+<div class="pg-assnpro">
+  <div class=heading>
+      <h3>Employee</h3>
+  </div>
+  <body>
+    <div class="btnbar">
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+      </li>
+      <li>
+        <button type="button" (click)="OnSubmit()" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-ok"></span></button>
+      </li>
+      <li>
+        <button type="button" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button>
+      </li>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <table>
+      <tr style="background:#8BBC58">
+        <th style="text-align:center">Employee Id</th>
+        <th style="text-align:center">Employee Name</th>
+        <th style="text-align:center">Designation</th>
+        <th style="text-align:center">Department</th>
+        <th style="text-align:center">EDGE Practice</th>
+        <th style="text-align:center">COE</th>
+        <th style="text-align:center">Base Location</th>
+        <th style="text-align:center">Joining Date</th>
+        <th style="text-align:center">Contact Number</th>
+        <th style="text-align:center">Email ID</th>
+        <th style="text-align:center">Reporting To</th>
+      </tr>
+      <tr *ngFor="let e of emps">
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Emp_Id" placeholder="Employee Id"></td>
+        <td><input style="width:180px;" type="text" [(ngModel)]="e.Emp_Name" placeholder="Employee Name"></td>
+        <td><input style="width:100px;" type="text" [(ngModel)]="e.Designation_Id" placeholder="Designation"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Department_Id" placeholder="Department"></td>
+        <td><input style="width:100px;" type="text" [(ngModel)]="e.Edge_Practice_Id" placeholder="EDGE Practice"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Coe_Id" placeholder="COE"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Location_Code" placeholder="Base Loc"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Joining_Date" placeholder="yyyy/mm/dd"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Contact_Number" placeholder="Contact"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Email_Id" placeholder="Email ID"></td>
+        <td><input style="width:90px;" type="text" [(ngModel)]="e.Reporting_To" placeholder="Reporting To"></td>
+      </tr>
+    </table>
+    <br>
+    <button (click)="addrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-plus"></span></button>
+    <button (click)="delrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-minus"></span></button>
+    <hr>
+    <div class="btnbar">
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+      </li>
+      <li>
+        <button type="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-export"></span></button>
+      </li>
+    </div>
+     <br><br><br>
+    <table>
+      <tr style="background:#8BBC58">
+        <th><input type="checkbox"></th>
+        <th></th>
+        <th style="text-align:center">Employee Id</th>
+        <th style="text-align:center">Employee Name</th>
+        <th style="text-align:center">Designation</th>
+        <th style="text-align:center">Department</th>
+        <th style="text-align:center">EDGE Practice</th>
+        <th style="text-align:center">COE</th>
+        <th style="text-align:center">Base Location</th>
+        <th style="text-align:center">Joining Date</th>
+        <th style="text-align:center">Contact Number</th>
+        <th style="text-align:center">Email ID</th>
+        <th style="text-align:center">Reporting To</th>
+      </tr>
+      <tr *ngFor="let ep of emp">
+        <td><input type="checkbox"></td>
+        <td style="width:70px;"><button (click)="edit(ep.emp_Id)"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" (click)="delete(ep.emp_Id)"><span class="glyphicon glyphicon-trash btn-bg" style="color:red"></span></button><button type="button" (click)="update(ep)" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-ok"></span></button><button (click)="cancel(ep.emp_Id)" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button></td>
+
+        <td>{{ep.emp_Id}}</td>
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.emp_Name" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.emp_Name}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.designation_Id" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.designation_Id}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.department_Id" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.department_Id}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.edge_Practice_Id" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.edge_Practice_Id}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.coe_Id" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.coe_Id}}</td> 
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.location_Code" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.location_Code}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.joining_Date" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.joining_Date}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.contact_Number" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.contact_Number}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.email_ID" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.email_ID}}</td>
+
+        <td *ngIf="ep.emp_Id === EditRowId"><input type="text" [(ngModel)]="ep.reporting_To" /></td>
+        <td *ngIf="ep.emp_Id !==EditRowId">{{ep.reporting_To}}</td>
+      </tr>
+    </table>
+  </body>
+</div>

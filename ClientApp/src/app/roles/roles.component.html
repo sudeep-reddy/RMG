@@ -1,0 +1,85 @@
+<div class="pg-assnpro">
+  <div class="heading">
+    <h3>Roles</h3>
+  </div>
+  <body>
+    <div class="btnbar">
+      <li>
+        <button type="submit" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></button>
+      </li>
+      <li>
+        <button type="submit" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-export"></span></button>
+      </li>
+      <li>
+        <button type="submit" style="color:rgb(7, 192, 7)" (click)="OnSubmit()"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+      </li>
+      <li>
+        <button type="submit" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button>
+      </li>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <table>
+      <tr style="background:#8BBC58">
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Designation</th>
+        <th>Role Description</th>
+        <th>Role Status</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <tr *ngFor="let r of roles">
+        <td><input [(ngModel)]="r.Employee_Id" style="width:100px;" type="text" placeholder="Employee Id"></td>
+        <td><input [(ngModel)]="r.Employee_Name" style="width:250px;" type="text" placeholder="Employee Name"></td>
+        <td><input [(ngModel)]="r.Role_Designation" style="width:250px;" type="text" placeholder="Designation"></td>
+        <td><input [(ngModel)]="r.Role_Description" style="width:100px;" type="text" placeholder="Role Description"></td>
+        <td><input [(ngModel)]="r.Role_Status" style="width:100px;" type="text" placeholder="Role Status"></td>
+        <td><input [(ngModel)]="r.Role_StartDate" style="width:100px;" type="text" placeholder="Start Date"></td>
+        <td><input [(ngModel)]="r.Role_EndDate" style="width:100px;" type="text" placeholder="End Date"></td>
+      </tr>
+    </table>
+    <br>
+    <button (click)="addrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-plus"></span></button>
+    <button (click)="delrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-minus"></span></button>
+    <hr>
+    <br><br><br>
+    <table>
+      <tr style="background:#8BBC58">
+        <th><input type="checkbox"></th>
+        <th></th>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Designation</th>
+        <th>Role Description</th>
+        <th>Role Status</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+      <tr *ngFor="let role of RoleAttributeList">
+        <td><input type="checkbox"></td>
+        <td style="width:70px;"><button (click)="edit(role.employee_Id)"><span class="glyphicon glyphicon-pencil"></span></button><button type="button" (click)="delete(role.employee_Id)"><span class="glyphicon glyphicon-trash btn-bg" style="color:red"></span></button><button type="button" (click)="update(role)" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-ok"></span></button><button (click)="cancel(role.employee_Id)" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></button></td>
+        <td>{{role.employee_Id}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.employee_Name" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.employee_Name}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.role_Designation" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.role_Designation}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.role_Description" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.role_Description}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.role_Status" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.role_Status}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.role_StartDate" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.role_StartDate}}</td>
+
+        <td *ngIf="role.employee_Id === EditRowId"><input type="text" [(ngModel)]="role.role_EndDate" /></td>
+        <td *ngIf="role.employee_Id!==EditRowId">{{role.role_EndDate}}</td>
+      </tr>
+    </table>
+  </body>
+</div>

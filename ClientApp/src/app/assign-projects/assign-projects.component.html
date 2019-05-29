@@ -1,0 +1,124 @@
+<div class="pg-assnpro">
+  <div class=heading>
+    <h3>Assign Project</h3>
+  </div>
+  <body>
+    <div class="btnbar">
+      <li>
+        <a role="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-import"></span></a>
+      </li>
+      <li>
+        <a role="button" style="color:rgb(58, 56, 56)"><span class="glyphicon glyphicon-export"></span></a>
+      </li>
+      <li>
+        <a (click)="OnSubmit()" role="button" style="color:rgb(7, 192, 7)"><span class="glyphicon glyphicon-floppy-disk"></span></a>
+      </li>
+      <li>
+        <a role="button" style="color:rgb(212, 2, 2)"><span class="glyphicon glyphicon-remove"></span></a>
+      </li>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <table>
+      <tr style="background:#8BBC58">
+        <th>Project Assign ID</th>
+        <th>Employee Id</th>
+        <th>Project Id</th>
+        <th>Assign Date</th>
+        <th>End Date</th>
+        <th>Billable</th>
+        <th>Billing Percentage</th>
+        <th>Location</th>
+        <th>Onsite</th>
+      </tr>
+      <!--insertion-->
+      <tr *ngFor="let ap of Pro">
+        <td><input [(ngModel)]="ap.Project_Assign_ID" style="width:100px;" type="text" placeholder="project Assign ID"></td>
+        <td><input [(ngModel)]="ap.Emp_Id" style="width:250px;" type="text" placeholder="Employee Id"></td>
+        <td><input [(ngModel)]="ap.Project_ID" style="width:250px;" type="text" placeholder="Project Id"></td>
+        <td><input [(ngModel)]="ap.Assign_Project_StartDate" style="width:100px;" type="text" placeholder="YYYY/MMM/DD"></td>
+        <td><input [(ngModel)]="ap.Assign_Project_EndDate" style="width:100px;" type="text" placeholder="YYYY/MMM/DD"></td>
+        <td><input [(ngModel)]="ap.Billable" style="width:100px;" type="text" placeholder="Billable"></td>
+        <td><input [(ngModel)]="ap.Billing_Percentage" style="width:100px;" type="text" placeholder="Billing (%)"></td>
+        <td><input [(ngModel)]="ap.Location" style="width:100px;" type="text" placeholder="Location"></td>
+        <td><input [(ngModel)]="ap.nsite" style="width:100px;" type="text" placeholder="On Site"></td>
+      </tr>
+
+
+    </table>
+    <br>
+    <button (click)="addrowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-plus"></span></button>
+    <button (click)="removerowtable()" style="background:#8BBC58"><span class="glyphicon glyphicon-minus"></span></button>
+
+    <hr>
+    <br><br><br>
+    <table>
+      <tr style="background:#8BBC58">
+        <th><input type="checkbox"></th>
+        <th>               </th>
+        <th>project Assign ID</th>
+        <th>Employee Id</th>
+        <th>Project Id</th>
+        <th>Emp name</th>
+        <th>Project name</th>
+        <th>Assign Date</th>
+        <th>End Date</th>
+        <th>Billable</th>
+        <th>Billable(%)</th>
+        <th>Location</th>
+        <th>On Site</th>
+
+      </tr>
+
+
+      <tr *ngFor="let ap of assignproj">
+        <td><input type="checkbox"></td>
+        <td><button (click)="edit(ap.project_Assign_ID)"><span class="glyphicon glyphicon-pencil"></span></button><button><span (click)="Delete(ap.project_Assign_ID)" class="glyphicon glyphicon-trash btn-bg" style="color:red"></span></button><button><span (click)="cancel(ap.project_Assign_ID)" class="glyphicon glyphicon-remove"></span></button><button><span (click)="update(ap)" class="glyphicon glyphicon-ok" style="color:green"></span></button></td>
+        <td>{{ap.project_Assign_ID}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="emp Id" [(ngModel)]="ap.emp_Id" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.emp_Id}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="project ID" [(ngModel)]="ap.project_ID" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.project_ID}}</td>
+
+
+
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="Empname" [(ngModel)]="ap.emp_Name" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.emp_Name}}</td>
+
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="Projectname" [(ngModel)]="ap.project_Name" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.project_Name}}</td>
+
+
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="YYYY/MMM/DD" [(ngModel)]="ap.Assign_Project_StartDate" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.assign_Project_StartDate}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="YYYY/MMM/DD" [(ngModel)]="ap.Assign_Project_EndDate" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.assign_Project_EndDate}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="billable" [(ngModel)]="ap.billable" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.billable}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="billing_Percentage" [(ngModel)]="ap.billing_Percentage" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.billing_Percentage}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="location" [(ngModel)]="ap.location" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.location}}</td>
+
+        <td *ngIf="ap.project_Assign_ID === EditRowId"><input type="text" placeholder="onsite" [(ngModel)]="ap.onsite" /></td>
+        <td *ngIf="ap.project_Assign_ID!==EditRowId">{{ap.onsite}}</td>
+
+
+
+
+
+      </tr>
+    </table>
+  </body>
+</div>
+
